@@ -7,41 +7,26 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-//import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-//import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-//import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Home', 'Explore', 'Events',];
-//const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-
+const pages = ['Home', 'Explore', 'Events'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  //const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  // const handleOpenUserMenu = (event) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
-
   return (
-    <AppBar position="fixed" color='transparent'>
+    <AppBar position="fixed" color="transparent">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -52,12 +37,12 @@ function ResponsiveAppBar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
+              letterSpacing: '.6rem',
+              color: "#f3e5f5",
               textDecoration: 'none',
             }}
           >
-            LOGO
+            XPLORE
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -90,13 +75,15 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} >
-                  <Typography textAlign="center" color={'black'}>{page}</Typography>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center" color={'black'}>
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
+
           <Typography
             variant="h5"
             noWrap
@@ -108,19 +95,25 @@ function ResponsiveAppBar() {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
+              letterSpacing: '.6rem',
+              color: 'white',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            XPLORE
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, pl:60}}>
-            {pages.map((page) => (
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, pl: 60 }}>
+            {pages.map((page, index) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }}
+                sx={{
+                  my: 2, // You can adjust the vertical spacing here
+                  mx: 1, // You can adjust the horizontal spacing here, // You can adjust the spacing here
+                  color: 'white',
+                  display: 'block',
+                }}
               >
                 {page}
               </Button>
@@ -131,4 +124,5 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
+
 export default ResponsiveAppBar;

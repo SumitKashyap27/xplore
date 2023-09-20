@@ -1,29 +1,27 @@
 import React from 'react'
-import { Box, Stack, Typography} from '@mui/material'
-//import img3 from "../assets/3.png"
+import { Box, Stack, Typography} from "@mui/material"
+import bg from "../assets/bg.png"
 import Typewriter from 'typewriter-effect';
 
 const Home = () => {
   return (
       <Box
-        position="relative"
-        display="inline-block"
-        width="100%"
-        overflow="hidden"
-        backgroundColor={'black'}
-        id='home'        
+      //  // position="relative"
+      //   width="100%"
+      //   id='home'        
       >
-        {/* <img
-          src={img3}
+        <img
+          src={bg}
           alt="Responsive Img"
           style={{
             width: '100%',
-            height: 'auto',
+            height: '100%',
             objectFit: 'cover',
+            position: 'absolute'
           }}
           
           
-        /> */}
+        />
 
         <Box
           position="absolute"
