@@ -1,19 +1,10 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import React, { useState } from 'react';
+import { AppBar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Typography, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-
-const pages = ['Home', 'Explore', 'Events'];
+import { Link } from 'react-router-dom';
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -30,8 +21,8 @@ function ResponsiveAppBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -52,7 +43,12 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              sx={{
+                color: 'white',
+                '& svg': {
+                  fill: 'white',
+                },
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -74,21 +70,34 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" color={'black'}>
-                    {page}
-                  </Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center" color={'black'}>
+                  Home
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center" color={'black'}>
+                  Explore
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center" color={'black'}>
+                  Events
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center" color={'black'}>
+                  Contact
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
 
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="/"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -104,20 +113,62 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, pl: 60 }}>
-            {pages.map((page, index) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2, // You can adjust the vertical spacing here
-                  mx: 1, // You can adjust the horizontal spacing here, // You can adjust the spacing here
-                  color: 'white',
-                  display: 'block',
-                }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              component={Link}
+              to="/"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 2,
+                mx: 1,
+                color: 'white',
+                display: 'block',
+                textDecoration: 'none',
+              }}
+            >
+              Home
+            </Button>
+            <Button
+              component={Link}
+              to="/explore"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 2,
+                mx: 1,
+                color: 'white',
+                display: 'block',
+                textDecoration: 'none',
+              }}
+            >
+              Explore
+            </Button>
+            <Button
+              component={Link}
+              to="/events"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 2,
+                mx: 1,
+                color: 'white',
+                display: 'block',
+                textDecoration: 'none',
+              }}
+            >
+              Events
+            </Button>
+            <Button
+              component={Link}
+              to="/contact"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 2,
+                mx: 1,
+                color: 'white',
+                display: 'block',
+                textDecoration: 'none',
+              }}
+            >
+              Contact
+            </Button>
           </Box>
         </Toolbar>
       </Container>
