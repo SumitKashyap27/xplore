@@ -3,30 +3,31 @@ import { Box, Stack, Typography, Button } from "@mui/material";
 import bg from "../assets/bg.png";
 import Typewriter from 'typewriter-effect';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 const theme = createTheme({
   palette: {
     primary: {
       main: "#FFFFFF",}
-    //secondary: purple,
   },
 });
 
 const Home = () => {
   return (
+    <div style={{minHeight:"100vh"}}>
     <Box>
       <img
         src={bg}
         alt="Responsive Img"
         style={{
           width: '100%',
-          height: '100vh', // Set the height to fill the viewport
+          height: '100vh', 
           objectFit: 'cover',
           position: 'absolute',
           top: 0,
           left: 0,
         }}
-      />
+        />
 
       <Box
         position="absolute"
@@ -37,7 +38,7 @@ const Home = () => {
         h="100%"
         bg="black"
         opacity="0.5"
-      />
+        />
       <Box
         position="absolute"
         top="30%"
@@ -48,12 +49,12 @@ const Home = () => {
         borderRadius="md"
         fontSize={{ base: '3xl', md: '6xl' }}
         fontFamily={"Segoe UI"}
-      >
+        >
         <Stack
           direction="column"
           spacing="4"
           py={["3", "7"]}
-        >
+          >
           <Typography as="h1" sx={{ fontSize: { xs: '2rem', md: '4rem' }, fontWeight: 'bold', color: 'white' }}>
             Hey!
           </Typography>
@@ -69,32 +70,47 @@ const Home = () => {
               loop: true,
               wrapperClassName: "typewriter-wrapper",
             }}
-          />
+            />
         </Stack>
       </Box>
-      <ThemeProvider theme={theme}>     
+  <ThemeProvider theme={theme}>     
   <Box
     position="absolute"
     bottom="20px" // Adjust the distance from the bottom as needed
     left="50%"
     transform="translateX(-50%)"
-  >
-    <Button 
-      variant="outlined"
-      sx={{
-        borderRadius: '50%', // Makes the button elliptical
-        minHeight: '100px',
-        color: "white",
-        border: '2px solid white', // Add this line to set the outline color
-      }} 
-      fontFamily={"Segoe UI"} 
     >
-      Start
-    </Button>
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 100 }}
+        style={{
+          position: 'absolute',
+          bottom: '20px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+        }}
+      >
+        <Link to="/about" style={{ textDecoration: 'none' }}>
+          <Button
+            variant="outlined"
+            sx={{
+              borderRadius: '50%',
+              minHeight: '100px',
+              color: 'white',
+              border: '2px solid white',
+            }}
+            fontFamily="Segoe UI"
+          >
+            Start
+          </Button>
+        </Link>
+      </motion.div>
   </Box>
 </ThemeProvider>
 
     </Box>
+          </div>
   );
 };
 

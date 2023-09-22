@@ -15,7 +15,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="fixed" color="transparent">
+    <AppBar position="absolute" color="transparent">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -77,7 +77,7 @@ function ResponsiveAppBar() {
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center" color={'black'}>
-                  Explore
+                  About 
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
@@ -129,7 +129,7 @@ function ResponsiveAppBar() {
             </Button>
             <Button
               component={Link}
-              to="/explore"
+              to="/about"
               onClick={handleCloseNavMenu}
               sx={{
                 my: 2,
@@ -139,7 +139,7 @@ function ResponsiveAppBar() {
                 textDecoration: 'none',
               }}
             >
-              Explore
+              About
             </Button>
             <Button
               component={Link}

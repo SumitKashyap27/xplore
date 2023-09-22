@@ -7,9 +7,9 @@ import Contact from "./Components/Contact";
 function App() {
   return (
     <Router>
-      <ResponsiveAppBar/>
+      
       <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={[<ResponsiveAppBar/>,<Home />,<Contact/>]} />
        {/* <Route path="/explore" element={<Explore />} /> */}
         <Route path="/contact" element={<Contact />} />
       </Routes>
