@@ -15,9 +15,7 @@ const theme = createTheme({
 
 const Contact = () => {
   return (
-    <div style={{minHeight:"100vh"}} >
-
-    <Box>
+    <Box >
       <img
         src={space}
         alt="Space Background"
@@ -109,7 +107,7 @@ const Contact = () => {
               width: '100%',
             }}
             animate={{
-              translateY: "20px",
+              translateY: "40px",
             }}
             transition={{
               duration: 2,
@@ -128,7 +126,6 @@ const Contact = () => {
         </Box>
       </Grid>
     </Box>
-              </div>
   );
 };
 
