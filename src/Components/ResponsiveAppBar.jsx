@@ -71,22 +71,26 @@ function ResponsiveAppBar() {
               }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center" color={'black'}>
+                <Typography textAlign="center"               component={Link}
+              to="/home" color={'black'}>
                   Home
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center" color={'black'}>
+                <Typography textAlign="center"               component={Link}
+              to="/about"color={'black'}>
                   About 
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center" color={'black'}>
+                <Typography textAlign="center"               component={Link}
+              to="/events"color={'black'}>
                   Events
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center" color={'black'}>
+                <Typography textAlign="center"              component={Link}
+              to="/contact" color={'black'}>
                   Contact
                 </Typography>
               </MenuItem>
