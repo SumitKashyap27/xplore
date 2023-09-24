@@ -26,7 +26,6 @@ const Contact = () => {
           position: 'absolute',
           top: 0,
           left: 0,
-          zIndex: -1,
         }}
         />
       <Grid
@@ -42,7 +41,7 @@ const Contact = () => {
             sx={{
               color: 'white',
               zIndex: 1,
-              pl: {xs:10, sm: 2},
+              pl: {xs:0, sm: 2},
               pr: { xs: 0, sm: 50 }, // Adjust right padding for different screen sizes
               textAlign: { xs: 'center', sm: 'left' }, // Center text on small screens, left-align on larger screens
             }}

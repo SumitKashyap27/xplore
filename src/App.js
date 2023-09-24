@@ -4,15 +4,16 @@ import ResponsiveAppBar from "./Components/ResponsiveAppBar";
 import Contact from "./Components/Contact";
 //import { Explore } from "@mui/icons-material";
 import About from "./Components/About";
+import Gallery from "./Components/Gallery";
 
 function App() {
   return (
     <Router>
       <ResponsiveAppBar/>
-      <Routes>
+      <Routes path="*">
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-       {/* <Route path="/explore" element={<Explore />} /> */}
+       <Route path="/gallery" element={<Gallery />} /> 
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>

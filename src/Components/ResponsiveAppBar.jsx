@@ -71,25 +71,29 @@ function ResponsiveAppBar() {
               }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center"               component={Link}
+                <Typography textAlign="center"               
+                component={Link}
               to="/home" color={'black'}>
                   Home
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center"               component={Link}
+                <Typography textAlign="center"               
+                component={Link}
               to="/about"color={'black'}>
                   About 
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center"               component={Link}
+                <Typography textAlign="center"               
+                component={Link}
               to="/events"color={'black'}>
                   Events
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center"              component={Link}
+                <Typography textAlign="center"              
+                component={Link}
               to="/contact" color={'black'}>
                   Contact
                 </Typography>
@@ -147,7 +151,7 @@ function ResponsiveAppBar() {
             </Button>
             <Button
               component={Link}
-              to="/events"
+              to="/gallery"
               onClick={handleCloseNavMenu}
               sx={{
                 my: 2,
@@ -157,7 +161,7 @@ function ResponsiveAppBar() {
                 textDecoration: 'none',
               }}
             >
-              Events
+              Gallery
             </Button>
             <Button
               component={Link}
