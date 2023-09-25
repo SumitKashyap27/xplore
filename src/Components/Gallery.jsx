@@ -10,6 +10,8 @@ import Error from './Error';
 import Loader from './Loader';
 import image from "../assets/aboutus.png"
 
+// ... (your existing imports and code)
+
 export default function NasaPhotoCarousel() {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -62,15 +64,14 @@ export default function NasaPhotoCarousel() {
       paddingTop={10}
       style={{
         backgroundImage: `url(${image})`,
-            width: '100%',
-            objectFit: 'cover',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        width: '100%',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '2rem',
       }}
     >
       <h1>NASA Photo Carousel</h1>
@@ -92,7 +93,7 @@ export default function NasaPhotoCarousel() {
             dynamicHeight={false} // Prevent image stretching
           >
             {nasaImages.map((image, index) => (
-              <div key={index}>
+              <div key={index} style={{ margin: '0 auto' }}>
                 <Paper
                   style={{
                     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
@@ -110,6 +111,11 @@ export default function NasaPhotoCarousel() {
                       objectFit: 'contain', // Fit the image within the container
                     }}
                   />
+                  <div style={{ padding: '1rem' }}>
+                    <Typography variant="h5">{image.title}</Typography>
+                    <Typography variant="body1">{image.explanation}</Typography>
+                    <Typography variant="caption">{image.date}</Typography>
+                  </div>
                 </Paper>
               </div>
             ))}
@@ -127,7 +133,7 @@ export default function NasaPhotoCarousel() {
             maxWidth: '800px',
             maxHeight: '80vh',
             backgroundColor: 'white',
-            boxShadow: 24,
+            boxShadow: 400,
             p: 2,
             textAlign: 'center',
           }}
@@ -137,7 +143,7 @@ export default function NasaPhotoCarousel() {
             color="inherit"
             onClick={handleClose}
             aria-label="close"
-            sx={{ position: 'absolute', right: '10px', top: '10px' }}
+            style={{ position: 'absolute', right: '10px', top: '10px' }}
           >
             <CloseIcon />
           </IconButton>
@@ -148,9 +154,9 @@ export default function NasaPhotoCarousel() {
                 alt={`NASA`}
                 style={{ maxWidth: '100%', maxHeight: '60vh' }}
               />
-              <Typography variant="body1" sx={{ marginTop: '1rem' }}>
-                {selectedImage.explanation}
-              </Typography>
+              <Typography variant="h5" style={{ marginTop: '1rem' }}>{selectedImage.title}</Typography>
+              <Typography variant="body1">{selectedImage.explanation}</Typography>
+              <Typography variant="caption">{selectedImage.date}</Typography>
             </div>
           )}
         </div>
@@ -168,12 +174,12 @@ export default function NasaPhotoCarousel() {
       >
         <IconButton
           onClick={handlePrev}
-          sx={{
+          style={{
             position: 'absolute',
             left: '10px',
-            bgcolor: 'rgba(0, 0, 0, 0.5)',
-            '&:hover': {
-              bgcolor: 'rgba(0, 0, 0, 0.8)',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            ':hover': {
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
             },
           }}
         >
@@ -181,12 +187,12 @@ export default function NasaPhotoCarousel() {
         </IconButton>
         <IconButton
           onClick={handleNext}
-          sx={{
+          style={{
             position: 'absolute',
             right: '10px',
-            bgcolor: 'rgba(0, 0, 0, 0.5)',
-            '&:hover': {
-              bgcolor: 'rgba(0, 0, 0, 0.8)',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            ':hover': {
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
             },
           }}
         >
