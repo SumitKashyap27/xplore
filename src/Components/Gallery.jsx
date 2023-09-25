@@ -6,6 +6,8 @@ import { Box, Paper, IconButton, Modal, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Error from './Error';
+import Loader from './Loader';
 import image from "../assets/aboutus.png"
 
 export default function NasaPhotoCarousel() {
@@ -13,18 +15,24 @@ export default function NasaPhotoCarousel() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [nasaImages, setNasaImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const apiKey = 'G6MQhXqXJf4OOBBehEQre3BsHijIV0bsG0gVhTt7';
 
   useEffect(() => {
     // Fetch NASA's "Photo of the Day" images
+    setLoading(true); // Set loading to true when starting data fetching
     axios
       .get(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=10`)
       .then((response) => {
         setNasaImages(response.data);
+        setLoading(false); // Set loading to false when data is fetched
       })
       .catch((error) => {
         console.error('Error fetching NASA images:', error);
+        setError(true); // Set error to true when an error occurs
+        setLoading(false); // Set loading to false when an error occurs
       });
   }, []);
 
@@ -66,39 +74,48 @@ export default function NasaPhotoCarousel() {
       }}
     >
       <h1>NASA Photo Carousel</h1>
-      <div id="carousel" style={{ maxWidth: '80%', width: '100%' }}>
-        <Carousel
-          selectedItem={currentIndex}
-          onChange={(index) => setCurrentIndex(index)}
-          showArrows={true}
-          showStatus={false}
-          showThumbs={true}
-          dynamicHeight={false} // Prevent image stretching
-        >
-          {nasaImages.map((image, index) => (
-            <div key={index}>
-              <Paper
-                style={{
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                }}
-              >
-                <img
-                  src={image.url}
-                  alt={`NASA ${index}`}
-                  onClick={() => handleOpen(image, index)}
+      
+      {/* Conditionally render loader or error message */}
+      {loading ? (
+        <Loader /> // Replace with your loader component
+      ) : error ? (
+        <Error message={"Error fetching NASA images"} /> // Replace with your error component
+      ) : (
+        // Render the gallery component when data is loaded and no error
+        <div id="carousel" style={{ maxWidth: '80%', width: '100%' }}>
+          <Carousel
+            selectedItem={currentIndex}
+            onChange={(index) => setCurrentIndex(index)}
+            showArrows={true}
+            showStatus={false}
+            showThumbs={true}
+            dynamicHeight={false} // Prevent image stretching
+          >
+            {nasaImages.map((image, index) => (
+              <div key={index}>
+                <Paper
                   style={{
-                    maxWidth: '100%',
-                    maxHeight: '60vh',
-                    objectFit: 'contain', // Fit the image within the container
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
                   }}
-                />
-              </Paper>
-            </div>
-          ))}
-        </Carousel>
-      </div>
+                >
+                  <img
+                    src={image.url}
+                    alt={`NASA ${index}`}
+                    onClick={() => handleOpen(image, index)}
+                    style={{
+                      maxWidth: '100%',
+                      maxHeight: '60vh',
+                      objectFit: 'contain', // Fit the image within the container
+                    }}
+                  />
+                </Paper>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      )}
       <Modal open={open} onClose={handleClose}>
         <div
           style={{
