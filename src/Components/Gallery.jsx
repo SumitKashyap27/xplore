@@ -8,9 +8,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Error from './Error';
 import Loader from './Loader';
-import image from "../assets/aboutus.png"
-
-// ... (your existing imports and code)
+import image from '../assets/aboutus.png';
 
 export default function NasaPhotoCarousel() {
   const [open, setOpen] = useState(false);
@@ -23,18 +21,17 @@ export default function NasaPhotoCarousel() {
   const apiKey = 'G6MQhXqXJf4OOBBehEQre3BsHijIV0bsG0gVhTt7';
 
   useEffect(() => {
-    // Fetch NASA's "Photo of the Day" images
-    setLoading(true); // Set loading to true when starting data fetching
+    setLoading(true);
     axios
       .get(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=10`)
       .then((response) => {
         setNasaImages(response.data);
-        setLoading(false); // Set loading to false when data is fetched
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching NASA images:', error);
-        setError(true); // Set error to true when an error occurs
-        setLoading(false); // Set loading to false when an error occurs
+        setError(true);
+        setLoading(false);
       });
   }, []);
 
@@ -61,43 +58,79 @@ export default function NasaPhotoCarousel() {
 
   return (
     <Box
-      paddingTop={10}
       style={{
         backgroundImage: `url(${image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         width: '100%',
         minHeight: '100vh',
+        backgroundSize: 'cover',
+        position: 'absolute',
+        top: 0,
+        left: 0,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: '2rem',
+        overflow: 'hidden',
       }}
     >
-      <h1>NASA Photo Carousel</h1>
-      
-      {/* Conditionally render loader or error message */}
+      <h1
+        style={{
+          mr: 2,
+          display: { xs: 'none', md: 'flex' },
+          fontFamily: 'monospace',
+          fontWeight: 700,
+          letterSpacing: '.6rem',
+          textDecoration: 'none',
+          fontSize: '2rem',
+          color: 'white',
+          marginTop: '7rem',
+          marginBottom: '2rem',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        }}
+      >
+        NASA Photo Carousel
+      </h1>
+
       {loading ? (
-        <Loader /> // Replace with your loader component
+        <Loader />
       ) : error ? (
-        <Error message={"Error fetching NASA images"} /> // Replace with your error component
+        <Error message="Error fetching NASA images" />
       ) : (
-        // Render the gallery component when data is loaded and no error
-        <div id="carousel" style={{ maxWidth: '80%', width: '100%' }}>
+        <div
+          id="carousel"
+          style={{
+            maxWidth: '80%',
+            width: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            borderRadius: '8px',
+            padding: '1rem',
+            marginBottom: '2rem',
+          }}
+        >
           <Carousel
             selectedItem={currentIndex}
             onChange={(index) => setCurrentIndex(index)}
             showArrows={true}
             showStatus={false}
             showThumbs={true}
-            dynamicHeight={false} // Prevent image stretching
+            dynamicHeight={false}
+            useKeyboardArrows={true}
+            transitionTime={500} // Adjust transition time for smoother animation
           >
             {nasaImages.map((image, index) => (
-              <div key={index} style={{ margin: '0 auto' }}>
+              <div
+                key={index}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
                 <Paper
                   style={{
                     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                    borderRadius: '4px',
+                    borderRadius: '8px',
                     cursor: 'pointer',
                   }}
                 >
@@ -108,13 +141,42 @@ export default function NasaPhotoCarousel() {
                     style={{
                       maxWidth: '100%',
                       maxHeight: '60vh',
-                      objectFit: 'contain', // Fit the image within the container
+                      objectFit: 'contain',
                     }}
                   />
-                  <div style={{ padding: '1rem' }}>
-                    <Typography variant="h5">{image.title}</Typography>
-                    <Typography variant="body1">{image.explanation}</Typography>
-                    <Typography variant="caption">{image.date}</Typography>
+                  <div
+                    style={{
+                      padding: '1rem',
+                      textAlign: 'center',
+                      color: 'black',
+                      zIndex:1
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      style={{
+                        fontSize: '1.2rem',
+                        marginBottom: '0.5rem',
+                      }}
+                    >
+                      {image.title}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      style={{
+                        maxHeight: '10vh',
+                        overflowY: 'auto',
+                        fontSize: '0.9rem',
+                      }}
+                    >
+                      {image.explanation}
+                    </Typography>
+                    <Typography
+                      variant="caption"
+                      style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}
+                    >
+                      {image.date}
+                    </Typography>
                   </div>
                 </Paper>
               </div>
@@ -122,6 +184,7 @@ export default function NasaPhotoCarousel() {
           </Carousel>
         </div>
       )}
+
       <Modal open={open} onClose={handleClose}>
         <div
           style={{
@@ -133,8 +196,9 @@ export default function NasaPhotoCarousel() {
             maxWidth: '800px',
             maxHeight: '80vh',
             backgroundColor: 'white',
-            boxShadow: 400,
-            p: 2,
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            borderRadius: '8px',
+            padding: '1rem',
             textAlign: 'center',
           }}
         >
@@ -151,12 +215,34 @@ export default function NasaPhotoCarousel() {
             <div>
               <img
                 src={selectedImage.url}
-                alt={`NASA`}
+                alt="NASA"
                 style={{ maxWidth: '100%', maxHeight: '60vh' }}
               />
-              <Typography variant="h5" style={{ marginTop: '1rem' }}>{selectedImage.title}</Typography>
-              <Typography variant="body1">{selectedImage.explanation}</Typography>
-              <Typography variant="caption">{selectedImage.date}</Typography>
+              <Typography
+                variant="h5"
+                style={{
+                  fontSize: '1.2rem',
+                  marginTop: '1rem',
+                }}
+              >
+                {selectedImage.title}
+              </Typography>
+              <Typography
+                variant="body1"
+                style={{
+                  maxHeight: '10vh',
+                  overflowY: 'auto',
+                  fontSize: '0.9rem',
+                }}
+              >
+                {selectedImage.explanation}
+              </Typography>
+              <Typography
+                variant="caption"
+                style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}
+              >
+                {selectedImage.date}
+              </Typography>
             </div>
           )}
         </div>
@@ -164,39 +250,30 @@ export default function NasaPhotoCarousel() {
       <div
         style={{
           position: 'absolute',
-          top: '50%',
-          transform: 'translateY(-50%)',
+          bottom: '2rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
           display: 'flex',
-          justifyContent: 'space-between',
-          width: '100%',
+          justifyContent: 'center',
           alignItems: 'center',
         }}
       >
         <IconButton
           onClick={handlePrev}
           style={{
-            position: 'absolute',
-            left: '10px',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            ':hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            },
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            marginRight: '1rem',
           }}
         >
-          <ChevronLeftIcon />
+          <ChevronLeftIcon style={{ color: 'white' }} />
         </IconButton>
         <IconButton
           onClick={handleNext}
           style={{
-            position: 'absolute',
-            right: '10px',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            ':hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            },
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
           }}
         >
-          <ChevronRightIcon />
+          <ChevronRightIcon style={{ color: 'white' }} />
         </IconButton>
       </div>
     </Box>
