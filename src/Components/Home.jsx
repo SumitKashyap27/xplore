@@ -76,7 +76,7 @@ const Home = () => {
   <ThemeProvider theme={theme}>     
   <Box
     position="absolute"
-    bottom="20px" // Adjust the distance from the bottom as needed
+    bottom="20px" 
     left="50%"
     transform="translateX(-50%)"
     >

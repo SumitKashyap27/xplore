@@ -42,8 +42,8 @@ const Contact = () => {
               color: 'white',
               zIndex: 1,
               pl: {xs:0, sm: 2},
-              pr: { xs: 0, sm: 50 }, // Adjust right padding for different screen sizes
-              textAlign: { xs: 'center', sm: 'left' }, // Center text on small screens, left-align on larger screens
+              pr: { xs: 0, sm: 50 },
+              textAlign: { xs: 'center', sm: 'left' },
             }}
             >
             <Typography variant="h5" mb={1} 

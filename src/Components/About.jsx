@@ -58,17 +58,17 @@ const About = () => {
           opacity="0.5"
         />
                 
-                {planets.map((planet, index) => (
+        {planets.map((planet, index) => (
           <motion.img
             key={index}
             src={planet.src}
             alt={`Planet ${index + 1}`}
             style={{
               position: 'absolute',
-              width: '7vw', // Adjust the size as needed
+              width: '7vw', 
               left: planet.x,
               top: planet.y,
-              transform: `translate(-50%, -50%)`, // Center the image at the given position
+              transform: `translate(-50%, -50%)`,
             }}
             initial={{
               opacity: 0,
@@ -79,8 +79,8 @@ const About = () => {
             animate={{
               opacity: 1,
               scale: 1,
-              x: getRandomPercentage(), // Change this to move along the X-axis
-              y: getRandomPercentage(), // Change this to move along the Y-axis
+              x: getRandomPercentage(),
+              y: getRandomPercentage(), 
             }}
             transition={{
               repeat: Infinity,

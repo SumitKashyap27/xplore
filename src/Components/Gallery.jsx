@@ -8,7 +8,31 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Error from './Error';
 import Loader from './Loader';
+import { motion } from 'framer-motion';
+
 import image from '../assets/aboutus.png';
+import r1 from  '../assets/rocket1.png';
+import r2 from  '../assets/rocket2.png';
+import r3 from  '../assets/rocket3.png';
+import r4 from  '../assets/rocket4.png';
+import r5 from  '../assets/rocket5.png';
+import r6 from  '../assets/rocket6.png';
+import r7 from  '../assets/rocket7.png';
+import r8 from  '../assets/rocket8.png';
+
+const getRandomPercentage = () => Math.floor(Math.random() * 80) + 10 + '%';
+
+const rockets = [
+  { src: r1, x: getRandomPercentage(), y: getRandomPercentage() },
+  { src: r2, x: getRandomPercentage(), y: getRandomPercentage() },
+  { src: r3, x: getRandomPercentage(), y: getRandomPercentage() },
+  { src: r4, x: getRandomPercentage(), y: getRandomPercentage() },
+  { src: r5, x: getRandomPercentage(), y: getRandomPercentage() },
+  { src: r6, x: getRandomPercentage(), y: getRandomPercentage() },
+  { src: r7, x: getRandomPercentage(), y: getRandomPercentage() },
+  { src: r8, x: getRandomPercentage(), y: getRandomPercentage() },
+];
+
 
 export default function NasaPhotoCarousel() {
   const [open, setOpen] = useState(false);
@@ -74,8 +98,6 @@ export default function NasaPhotoCarousel() {
     >
       <h1
         style={{
-          mr: 2,
-          display: { xs: 'none', md: 'flex' },
           fontFamily: 'monospace',
           fontWeight: 700,
           letterSpacing: '.6rem',
@@ -89,6 +111,38 @@ export default function NasaPhotoCarousel() {
       >
         NASA Photo Carousel
       </h1>
+
+      {rockets.map((rockets, index) => (
+          <motion.img
+            key={index}
+            src={rockets.src}
+            alt={`Rockets ${index + 1}`}
+            style={{
+              position: 'absolute',
+              width: '7vw', 
+              left: rockets.x,
+              top: rockets.y,
+              transform: `translate(-50%, -50%)`,
+            }}
+            initial={{
+              opacity: 0,
+              scale: 0.5,
+              x: 0,
+              y: 0,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              x: getRandomPercentage(),
+              y: getRandomPercentage(), 
+            }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: 4,
+            }}
+          />
+        ))}
 
       {loading ? (
         <Loader />
@@ -115,7 +169,7 @@ export default function NasaPhotoCarousel() {
             showThumbs={true}
             dynamicHeight={false}
             useKeyboardArrows={true}
-            transitionTime={500} // Adjust transition time for smoother animation
+            transitionTime={500}
           >
             {nasaImages.map((image, index) => (
               <div
@@ -149,7 +203,6 @@ export default function NasaPhotoCarousel() {
                       padding: '1rem',
                       textAlign: 'center',
                       color: 'black',
-                      zIndex:1
                     }}
                   >
                     <Typography

@@ -11,11 +11,11 @@ const Error = ({ message }) => {
         bottom: "4px",
         left: "50%",
         transform: "translateX(-50%)",
-        maxWidth: "600px", // Adjust the width as needed
+        maxWidth: "600px", 
         display: "flex",
         alignItems: "center",
         padding: "8px",
-        backgroundColor: "#f44336", // You can change the background color
+        backgroundColor: "#f44336",
       }}
     >
       <ErrorOutlineIcon style={{ marginRight: "8px", color: "#fff" }} />
