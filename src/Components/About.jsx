@@ -13,7 +13,7 @@ import planet7 from "../assets/planet7.png";
 import planet8 from "../assets/planet8.png";
 import planet9 from "../assets/planet9.png";
 
-const getRandomPercentage = () => Math.floor(Math.random() * 80) + 10 + '%';
+const getRandomPercentage = () => Math.floor(Math.random() * 70) + 10 + '%';
 
 const planets = [
   { src: planet1, x: getRandomPercentage(), y: getRandomPercentage() },
@@ -32,7 +32,7 @@ const About = () => {
       <Box id="about" 
       sx={{
         //position:'relative',
-       minHeight:'100vh',
+       minHeight:'80vh',
       }}>
         <img
           src={aboutus}
@@ -41,7 +41,7 @@ const About = () => {
             width: '100%',
             height: '100%', 
             objectFit: 'cover',
-            position: 'absolute',
+            position: 'realtive',
             top: 0,
             left: 0,
             right:0,

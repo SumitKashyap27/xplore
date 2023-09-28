@@ -5,6 +5,7 @@ import Contact from "./Components/Contact";
 //import { Explore } from "@mui/icons-material";
 import About from "./Components/About";
 import Gallery from "./Components/Gallery";
+import Events from "./Components/Events";
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
       <ResponsiveAppBar/>
       <Routes path="*">
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={[<About />,]} />
         <Route path="/gallery" element={<Gallery />} /> 
         <Route path="/contact" element={<Contact />} />
+        <Route path="/events" element={<Events />} />
       </Routes>
     </Router>
   );
