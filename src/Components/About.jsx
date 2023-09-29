@@ -41,12 +41,11 @@ const About = () => {
             width: '100%',
             height: '100%', 
             objectFit: 'cover',
-            position: 'realtive',
-            top: 0,
-            left: 0,
-            right:0,
+            position: 'relative',
           }}
         />
+        
+
 
         <Box
           position="absolute"
@@ -130,9 +129,25 @@ const About = () => {
               </Typography>
             </Stack>
           </Stack>
+          
         </Box>
+              {/* Add a div for the wave */}
+      <div
+        style={{
+          position: 'relative',
+          bottom: '0', // Position the wave at the bottom
+          left: '0',
+          right: '0',
+          height: '20vh', // Adjust the height of the wave as needed
+          background: 'linear-gradient(to top, white, blue)', // Add your gradient colors here
+          clipPath: 'polygon(0 0, 100% 100%, 100% 0)', // Use clipPath to create a wave shape
+          opacity: '0.8', // Adjust the opacity as needed
+        }}
+      ></div>
+        
 
       </Box>
+      
 
   );
 };

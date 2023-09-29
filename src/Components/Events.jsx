@@ -56,8 +56,8 @@ const Events = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '200px', // Adjust the height as needed
-              backgroundColor: 'lightblue', // Add a background color for visibility
+              height: '200px',
+              backgroundColor: 'lightblue',
             }}>xs=2</Item>
           </Grid>
         ))}
