@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Typography, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 function ResponsiveAppBar() {
@@ -191,6 +191,20 @@ function ResponsiveAppBar() {
               }}
             >
               Events 
+            </Button>
+            <Button
+              component={HashLink}
+              to="/marseRover"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 2,
+                mx: 1,
+                color: 'white',
+                display: 'block',
+                textDecoration: 'none',
+              }}
+            >
+              Marse Rover 
             </Button>
           </Box>
         </Toolbar>

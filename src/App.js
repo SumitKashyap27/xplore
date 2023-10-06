@@ -6,6 +6,7 @@ import Contact from "./Components/Contact";
 import About from "./Components/About";
 import Gallery from "./Components/Gallery";
 import Events from "./Components/Events";
+import MarseRover from "./Components/MarseRover";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} /> 
         <Route path="/contact" element={<Contact />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/marseRover" element={<MarseRover/>}/>
       </Routes>
     </Router>
   );

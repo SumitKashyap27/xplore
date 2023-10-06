@@ -58,7 +58,7 @@ export default function NasaPhotoCarousel() {
     );
   };
   const marginValue = window.innerWidth <= 768 ? '100px' : '50px';
-  const paddingValue = window.innerWidth <= 768 ? '10px' : '20px';
+  //const paddingValue = window.innerWidth <= 768 ? '10px' : '20px';
   return (
     <Box id="gallery"
       style={{
