@@ -99,6 +99,7 @@ const Home = () => {
               minHeight: '100px',
               color: 'white',
               border: '2px solid white',
+              
             }}
             fontFamily="Segoe UI"
           >

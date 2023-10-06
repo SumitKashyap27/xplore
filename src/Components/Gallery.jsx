@@ -57,9 +57,10 @@ export default function NasaPhotoCarousel() {
       prevIndex === 0 ? nasaImages.length - 1 : prevIndex - 1
     );
   };
-
+  const marginValue = window.innerWidth <= 768 ? '100px' : '50px';
+  const paddingValue = window.innerWidth <= 768 ? '10px' : '20px';
   return (
-    <Box
+    <Box id="gallery"
       style={{
         backgroundImage: `url(${image})`,
         width: '100%',
@@ -82,6 +83,7 @@ export default function NasaPhotoCarousel() {
           color: 'white',
           marginTop: '7rem',
           marginBottom: '2rem',
+          marginLeft:marginValue,
           textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
         }}
       >
@@ -94,7 +96,7 @@ export default function NasaPhotoCarousel() {
         <Error message="Error fetching NASA images" />
       ) : (
         <div
-          id="carousel"
+          
           style={{
             maxWidth: '80%',
             width: '100%',

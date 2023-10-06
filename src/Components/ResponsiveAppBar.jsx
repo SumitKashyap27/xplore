@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppBar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Typography, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -21,7 +22,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h6"
             noWrap
-            component={Link}
+            component={HashLink}
             to="/"
             sx={{
               mr: 2,
@@ -53,7 +54,7 @@ function ResponsiveAppBar() {
               <MenuIcon />
             </IconButton>
             <Menu
-              id="menu-appbar"
+              //id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
@@ -72,28 +73,28 @@ function ResponsiveAppBar() {
             >
               <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center"               
-                component={Link}
+                component={HashLink}
               to="/home" color={'black'}>
                   Home
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center"               
-                component={Link}
+                component={HashLink}
               to="/about"color={'black'}>
                   About 
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center"               
-                component={Link}
+                component={HashLink}
               to="/gallery"color={'black'}>
                     Gallery
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center"              
-                component={Link}
+                component={HashLink}
               to="/contact" color={'black'}>
                   Contact
                 </Typography>
@@ -104,7 +105,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h5"
             noWrap
-            component={Link}
+            component={HashLink}
             to="/"
             sx={{
               mr: 2,
@@ -122,7 +123,7 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, pl: 60 }}>
             <Button
-              component={Link}
+              component={HashLink}
               to="/"
               onClick={handleCloseNavMenu}
               sx={{
@@ -136,7 +137,7 @@ function ResponsiveAppBar() {
               Home
             </Button>
             <Button
-              component={Link}
+              component={HashLink}
               to="/about"
               onClick={handleCloseNavMenu}
               sx={{
@@ -150,7 +151,7 @@ function ResponsiveAppBar() {
               About
             </Button>
             <Button
-              component={Link}
+              component={HashLink}
               to="/gallery"
               onClick={handleCloseNavMenu}
               sx={{
@@ -164,7 +165,7 @@ function ResponsiveAppBar() {
               Gallery
             </Button>
             <Button
-              component={Link}
+              component={HashLink}
               to="/contact"
               onClick={handleCloseNavMenu}
               sx={{
@@ -178,7 +179,7 @@ function ResponsiveAppBar() {
               Contact
             </Button>
             <Button
-              component={Link}
+              component={HashLink}
               to="/events"
               onClick={handleCloseNavMenu}
               sx={{

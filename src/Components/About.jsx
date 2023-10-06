@@ -29,10 +29,11 @@ const planets = [
 
 const About = () => {
   return (
+    <div style={{margin:0,padding:0}}>
       <Box id="about" 
       sx={{
         //position:'relative',
-       minHeight:'80vh',
+        minHeight:'100vh',
       }}>
         <img
           src={aboutus}
@@ -43,7 +44,7 @@ const About = () => {
             objectFit: 'cover',
             position: 'relative',
           }}
-        />
+          />
         
 
 
@@ -55,7 +56,7 @@ const About = () => {
           w="100%"
           h="100%"
           opacity="0.5"
-        />
+          />
                 
         {planets.map((planet, index) => (
           <motion.img
@@ -98,11 +99,11 @@ const About = () => {
           borderRadius="md"
           fontSize={{ base: '3xl', md: '6xl' }}
           fontFamily={"Segoe UI"}
-        >
+          >
           <Stack
             direction="column"
             spacing="4"
-          >
+            >
             <Typography as="h1" sx={{ fontSize: { xs: '2rem', md: '4rem' }, fontWeight: 'bold', color: 'white' }}>
               About Us
             </Typography>
@@ -111,7 +112,7 @@ const About = () => {
               p={'2'}
               alignItems={'center'}
               direction={['column', 'row']}
-            >
+              >
               <Typography letterSpacing={'widest'} lineHeight={"170%"} p={["4", "0"]} color={'grey'} textAlign={"left"} sx={{ fontSize: { xs: '12px', md: '16px' }}}>
                 Welcome to our cosmic adventure! We're here to take you on an incredible journey through the vast and mysterious universe, 
                 right from the comfort of your screen. Our mission is to bring the wonders of space to life, 
@@ -131,22 +132,11 @@ const About = () => {
           </Stack>
           
         </Box>
-              {/* Add a div for the wave */}
-      <div
-        style={{
-          position: 'relative',
-          bottom: '0', // Position the wave at the bottom
-          left: '0',
-          right: '0',
-          height: '20vh', // Adjust the height of the wave as needed
-          background: 'linear-gradient(to top, white, blue)', // Add your gradient colors here
-          clipPath: 'polygon(0 0, 100% 100%, 100% 0)', // Use clipPath to create a wave shape
-          opacity: '0.8', // Adjust the opacity as needed
-        }}
-      ></div>
+        
         
 
       </Box>
+      </div>
       
 
   );
