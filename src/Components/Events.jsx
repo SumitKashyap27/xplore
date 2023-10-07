@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Box, Grid, Typography, Dialog, DialogContent, Card, CardMedia, CardContent } from '@mui/material';
 import { experimentalStyled as styled } from '@mui/material/styles';
-import Error from './Error'; // Import your Error component
-import Loader from './Loader'; // Import your Loader component
+import Error from './Error'; 
+import Loader from './Loader';
 
 const Item = styled(Card)(({ theme }) => ({
   display: 'flex',
