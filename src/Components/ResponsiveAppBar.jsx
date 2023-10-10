@@ -93,10 +93,31 @@ function ResponsiveAppBar() {
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center"               
+                component={HashLink}
+              to="/contact"color={'black'}>
+                    Contact
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center"               
+                component={HashLink}
+              to="/events"color={'black'}>
+                    Events
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center"              
                 component={HashLink}
-              to="/contact" color={'black'}>
-                  Contact
+              to="/marsRover" color={'black'}>
+                  Marse Rover
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center"              
+                component={HashLink}
+              to="/news" color={'black'}>
+                  News
                 </Typography>
               </MenuItem>
             </Menu>
@@ -205,6 +226,20 @@ function ResponsiveAppBar() {
               }}
             >
               Marse Rover 
+            </Button>
+            <Button
+              component={HashLink}
+              to="/news"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 2,
+                mx: 1,
+                color: 'white',
+                display: 'block',
+                textDecoration: 'none',
+              }}
+            >
+                News
             </Button>
           </Box>
         </Toolbar>
