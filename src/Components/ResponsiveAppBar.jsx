@@ -241,6 +241,20 @@ function ResponsiveAppBar() {
             >
                 News
             </Button>
+            <Button
+              component={HashLink}
+              to="/calenderevents"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 2,
+                mx: 1,
+                color: 'white',
+                display: 'block',
+                textDecoration: 'none',
+              }}
+            >
+                Calender Events
+            </Button>
           </Box>
         </Toolbar>
       </Container>
