@@ -1,73 +1,83 @@
-import * as React from 'react';
-import dayjs from 'dayjs';
-import Badge from '@mui/material/Badge';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { PickersDay } from '@mui/x-date-pickers/PickersDay';
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-import { DayCalendarSkeleton } from '@mui/x-date-pickers/DayCalendarSkeleton';
-import { Box, CssBaseline } from '@mui/material';
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
 
-const initialValue = dayjs('2022-04-17');
+function MyApp() {
+  const [date, setDate] = useState(new Date());
+  const [events, setEvents] = useState([]);
+  const [showDialog, setShowDialog] = useState(false);
 
-// Function to fetch astronomical events from NASA API
-async function fetchAstronomicalEvents(date) {
-  const formattedDate = date.format('YYYY-MM-DD');
-  const apiKey = 'G6MQhXqXJf4OOBBehEQre3BsHijIV0bsG0gVhTt7'; // Replace with your NASA API key
-  const apiUrl = `https://api.nasa.gov/planetary/apod?date=${formattedDate}&api_key=${apiKey}`;
+  // Function to fetch astronomical events from the NASA API
+  const fetchAstronomicalEvents = async (selectedDate) => {
+    const apiKey = 'G6MQhXqXJf4OOBBehEQre3BsHijIV0bsG0gVhTt7';
+    const formattedDate = selectedDate.toISOString().split('T')[0];
 
-  try {
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error('Failed to fetch data from NASA API');
+    try {
+      const response = await fetch(
+        `https://api.nasa.gov/planetary/apod?date=${formattedDate}&api_key=${apiKey}`
+      );
+
+      if (response.ok) {
+        const eventData = await response.json();
+        setEvents([eventData]);
+      } else {
+        setEvents([]);
+      }
+    } catch (error) {
+      console.error(error);
+      setEvents([]);
     }
-
-    const eventData = await response.json();
-    return eventData;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
-function ServerDay(props) {
-  const { day, outsideCurrentMonth, ...other } = props;
-  const [eventData, setEventData] = React.useState(null);
-
-  const loadEventData = async () => {
-    const eventData = await fetchAstronomicalEvents(day);
-    setEventData(eventData);
   };
 
-  const isSelected = !outsideCurrentMonth;
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  };
+
+  const eventDialogStyle = {
+    backgroundColor: '#282c34',
+    color: 'white',
+    padding: '16px',
+    borderRadius: '8px',
+    marginTop: '16px',
+  };
+
+  const headerStyle = {
+    marginBottom: '16px',
+  };
+
+  const imgStyle = {
+    maxWidth: '100%',
+  };
+
+  // Handle date selection
+  const handleDateChange = (selectedDate) => {
+    setDate(selectedDate);
+    fetchAstronomicalEvents(selectedDate);
+    setShowDialog(true);
+  };
 
   return (
-    <Badge
-      key={day.toString()}
-      overlap="circular"
-      badgeContent={isSelected ? '🌚' : undefined}
-      onClick={loadEventData}
-    >
-      <PickersDay {...other} outsideCurrentMonth={outsideCurrentMonth} day={day} />
-    </Badge>
+    <div style={containerStyle} padding="50rem" >
+      <Calendar onChange={handleDateChange} value={date} />
+      {showDialog && (
+        <div style={eventDialogStyle}>
+          {events.length > 0 ? (
+            events.map((event, index) => (
+              <div key={index}>
+                <h2 style={headerStyle}>Astronomical Event for {date.toDateString()}</h2>
+                <h3>{event.title}</h3>
+                <p>{event.explanation}</p>
+                <img src={event.url} alt="Astronomical Event" style={imgStyle} />
+              </div>
+            ))
+          ) : (
+            <h2>No astronomical event information available for this date.</h2>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 
-export default function DateCalendarAstronomicalEvents() {
-  return (
-    <>
-      <CssBaseline />
-      <div style={{ backgroundColor: 'ThreeDDarkShadow', minHeight: '100vh', paddingTop: '5px', color:'white' }}>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateCalendar
-            defaultValue={initialValue}
-            renderLoading={() => <DayCalendarSkeleton />}
-            slots={{
-              day: ServerDay,
-            }}
-          />
-        </LocalizationProvider>
-      </div>
-    </>
-  );
-}
+export default MyApp;
