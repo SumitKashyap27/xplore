@@ -10,7 +10,7 @@ import {
 const MarsRoverComponent = () => {
   const [roverData, setRoverData] = useState({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error,] = useState(false);
 
   useEffect(() => {
     // Array of rover names to fetch data for
